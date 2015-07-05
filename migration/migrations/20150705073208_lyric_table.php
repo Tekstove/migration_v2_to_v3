@@ -8,5 +8,6 @@ class LyricTable extends AbstractMigration
     {
         $table = $this->table('lyric');
         $table->renameColumn('populqrnost', 'popularity');
+        $table->renameColumn('vidqna', 'views');
     }
 }
