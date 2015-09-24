@@ -10,7 +10,11 @@ class LyricTable extends AbstractMigration
         $table->renameColumn('populqrnost', 'popularity');
         $table->renameColumn('vidqna', 'views');
         $table->renameColumn('up_id', 'uploaded_by');
+        $this->query("ALTER TABLE `lyric` CHANGE `uploaded_by` `uploaded_by` INT(11) UNSIGNED NULL DEFAULT NULL; ");
         $table->renameColumn('zaglavie_palno', 'cache_title_full');
         $table->renameColumn('zaglavie_sakrateno', 'cache_title_short');
+        
+        $table->renameColumn('dopylnitelnoinfo', 'extraInfo');
+        $this->query("ALTER TABLE `lyric` CHANGE `extra_info` `extra_info` TEXT CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL; ");
     }
 }
