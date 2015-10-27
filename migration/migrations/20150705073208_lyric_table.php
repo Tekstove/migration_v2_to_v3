@@ -16,5 +16,12 @@ class LyricTable extends AbstractMigration
         
         $table->renameColumn('dopylnitelnoinfo', 'extraInfo');
         $this->query("ALTER TABLE `lyric` CHANGE `extra_info` `extra_info` TEXT CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL; ");
+        
+        $this->query('ALTER TABLE `lyric` CHANGE `video_youtube` `video_youtube` VARCHAR(100) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL;');
+        
+        $this->query('ALTER TABLE `lyric` CHANGE `video_metacafe` `video_metacafe` VARCHAR(100) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL; ');
+        
+        $this->query('ALTER TABLE `lyric` CHANGE `video_vbox7` `video_vbox7` VARCHAR(100) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL; ');
+        
     }
 }
