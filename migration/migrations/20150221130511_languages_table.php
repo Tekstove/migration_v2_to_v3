@@ -23,7 +23,7 @@ class LanguagesTable extends AbstractMigration
     public function up()
     {
         $this->query("
-            CREATE TABLE `languages` (
+            CREATE TABLE `language` (
                 `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
                 `name` varchar(255) NOT NULL,
                 PRIMARY KEY (`id`)
@@ -33,7 +33,7 @@ class LanguagesTable extends AbstractMigration
               -- Dumping data for table `languages`
               --
 
-              INSERT INTO `languages` (`id`, `name`) VALUES
+              INSERT INTO `language` (`id`, `name`) VALUES
               (1, 'Български'),
               (2, 'Английски'),
               (3, 'Гръцки'),
