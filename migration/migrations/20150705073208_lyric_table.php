@@ -23,5 +23,7 @@ class LyricTable extends AbstractMigration
         
         $this->query('ALTER TABLE `lyric` CHANGE `video_vbox7` `video_vbox7` VARCHAR(100) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL; ');
         
+        $this->query('ALTER TABLE `lyric` CHANGE `uploaded_by` `user_id` INT(11) UNSIGNED NULL DEFAULT NULL;');
+        
     }
 }
