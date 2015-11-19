@@ -6,6 +6,7 @@ class LyricVotes extends AbstractMigration
 {
     public function up()
     {
+        $this->table('glasuvane')->rename('lyric_votes');
         $this->query('ALTER TABLE `lyric_votes` CHANGE `id` `id` INT(11) UNSIGNED NOT NULL;');
         $this->query('ALTER TABLE lyric_votes DROP FOREIGN KEY glasuvane_ako_se_iztrie_pesenta;');
         $this->query('ALTER TABLE lyric_votes DROP PRIMARY KEY');

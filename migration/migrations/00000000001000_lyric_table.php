@@ -6,6 +6,14 @@ class LyricTable extends AbstractMigration
 {
     public function up()
     {
+        $this->query("
+            ALTER TABLE `lyric`
+            DROP `video_vbox7_orig`,
+            DROP `video_youtube_orig`,
+            DROP `video_metacafe_orig`;
+        ");
+        
+        
         $table = $this->table('lyric');
         $table->renameColumn('populqrnost', 'popularity');
         $table->renameColumn('vidqna', 'views');
