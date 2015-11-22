@@ -17,6 +17,9 @@ class LyricVotes extends AbstractMigration
         $this->query('ALTER TABLE `lyric_votes` ADD PRIMARY KEY(`id`);');
         $this->query('ALTER TABLE `lyric_votes` CHANGE `id` `id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT; ');
         
+        $this->query("ALTER TABLE `lyric_votes` ADD INDEX(`lyric_id`);");
+        $this->query("ALTER TABLE `lyric_votes` ADD INDEX(`username_id`);");
+        
         $this->query('
             DELETE lv2 
             FROM
@@ -27,6 +30,9 @@ class LyricVotes extends AbstractMigration
                 AND lv1.lyric_id = lv2.lyric_id
                 AND lv1.id > lv2.id
         ');
+        
+        $this->table('lyric_votes')->removeIndex(['lyric_id']);
+        $this->table('lyric_votes')->removeIndex(['username_id']);
 
         $this->query('ALTER TABLE `lyric_votes` ADD UNIQUE( `lyric_id`, `username_id`); ');
         

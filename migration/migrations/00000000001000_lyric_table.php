@@ -17,6 +17,7 @@ class LyricTable extends AbstractMigration
         $table = $this->table('lyric');
         $table->renameColumn('populqrnost', 'popularity');
         $table->renameColumn('vidqna', 'views');
+        $table->renameColumn('glasa', 'votesCount');
         $table->renameColumn('up_id', 'uploaded_by');
         $this->query("ALTER TABLE `lyric` CHANGE `uploaded_by` `uploaded_by` INT(11) UNSIGNED NULL DEFAULT NULL; ");
         $table->renameColumn('zaglavie_palno', 'cache_title_full');
