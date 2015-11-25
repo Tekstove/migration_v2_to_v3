@@ -17,5 +17,16 @@ class LyricTableMappings extends AbstractMigration
                 DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB
             '
         );
+        
+        $this->query("ALTER TABLE `lyric_language` CHANGE `lyric_id` `lyric_id` INT(11) UNSIGNED NOT NULL; ");
+        $this->query("ALTER TABLE `lyric_language` CHANGE `language_id` `language_id` SMALLINT(11) UNSIGNED NOT NULL; ");
+        
+        $this->query("
+            ALTER TABLE `lyric_language` ADD FOREIGN KEY (`lyric_id`) REFERENCES `lyric`(`id`) ON DELETE CASCADE ON UPDATE RESTRICT;
+        ");
+        
+        $this->query("
+            ALTER TABLE `lyric_language` ADD FOREIGN KEY (`language_id`) REFERENCES `language`(`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+        ");
     }
 }

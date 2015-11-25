@@ -34,5 +34,19 @@ class LyricTable extends AbstractMigration
         
         $this->query('ALTER TABLE `lyric` CHANGE `uploaded_by` `user_id` INT(11) UNSIGNED NULL DEFAULT NULL;');
         
+        $this->query("
+            ALTER TABLE lyric MODIFY text_bg text NULL;
+        ");
+        
+        echo "Updating lyrics..." . PHP_EOL;
+        $this->query("
+            UPDATE
+                lyric
+            SET
+                text_bg = NULL
+            WHERE
+                TRIM(text_bg) = ''
+        ");
+        
     }
 }
