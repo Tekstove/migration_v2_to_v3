@@ -14,5 +14,7 @@ class PermissionGroupUser extends AbstractMigration
         
         $this->query("ALTER TABLE `permission_group_users` ADD FOREIGN KEY (`group_Id`) REFERENCES `permission_group`(`id`) ON DELETE RESTRICT ON UPDATE RESTRICT; ");
         $this->query("ALTER TABLE `permission_group_users` ADD FOREIGN KEY (`user_id`) REFERENCES `user`(`id`) ON DELETE RESTRICT ON UPDATE RESTRICT");
+        
+        $this->table('permission_group_users')->rename('permission_group_user');
     }
 }
