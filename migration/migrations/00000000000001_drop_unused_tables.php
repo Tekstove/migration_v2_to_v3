@@ -12,5 +12,7 @@ class DropUnusedTables extends AbstractMigration
         $this->table('chat_bans_by_id')->drop();
         $this->table('chat_bans_votes')->drop();
         $this->table('permission_users')->drop();
+        $this->table('top100')->drop();
+        $this->table('_cache')->drop();
     }
 }
