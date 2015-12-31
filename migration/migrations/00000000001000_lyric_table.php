@@ -17,7 +17,7 @@ class LyricTable extends AbstractMigration
         $table = $this->table('lyric');
         $table->renameColumn('populqrnost', 'popularity');
         $table->renameColumn('vidqna', 'views');
-        $table->renameColumn('glasa', 'votesCount');
+        $table->renameColumn('glasa', 'votes_count');
         $table->renameColumn('up_id', 'uploaded_by');
         $this->query("ALTER TABLE `lyric` CHANGE `uploaded_by` `uploaded_by` INT(11) UNSIGNED NULL DEFAULT NULL; ");
         $table->renameColumn('zaglavie_palno', 'cache_title_full');
@@ -47,6 +47,20 @@ class LyricTable extends AbstractMigration
             WHERE
                 TRIM(text_bg) = ''
         ");
+        
+        $this->query("ALTER TABLE `lyric` ADD `text_bg_added` TIMESTAMP NULL DEFAULT NULL AFTER `text_bg`; ");
+        $this->query("ALTER TABLE `lyric` ADD INDEX(`text_bg_added`);");
+        
+        $this->query("
+            UPDATE
+                `lyric`
+            SET
+                text_bg_added = `podnovena`
+            WHERE
+                DATE(`podnovena`) > DATE('2008-09-08')
+        ");
+        
+        $table->removeColumn('podnovena');
         
     }
 }
