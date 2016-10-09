@@ -10,5 +10,13 @@ class Album extends AbstractMigration
         $this->query("
             ALTER TABLE `album` CHANGE `up_id` `user_id` INT(11) UNSIGNED NOT NULL; 
         ");
+        
+        $this->query("
+            ALTER TABLE
+                `album`
+            ENGINE = INNODB DEFAULT
+            CHARSET=utf8
+            COLLATE utf8_general_ci
+        ");
     }
 }
