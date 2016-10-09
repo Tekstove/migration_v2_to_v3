@@ -2,24 +2,24 @@
 
 use Phinx\Migration\AbstractMigration;
 
-class AlbumArtistsConstraints extends AbstractMigration
+class AlbumLyricConstraints extends AbstractMigration
 {
     public function up()
     {
         $this->query("
-            ALTER TABLE `album_artist`
+            ALTER TABLE `album_lyric`
             ADD CONSTRAINT
-                `album_artist_artist_contraint`
-                FOREIGN KEY (`artist_id`)
-                REFERENCES `artist`(`id`)
+                `album_lyric_lyric_contraint`
+                FOREIGN KEY (`lyric_id`)
+                REFERENCES `lyric`(`id`)
                 ON DELETE RESTRICT
                 ON UPDATE RESTRICT;
         ");
         
         $this->query("
-            ALTER TABLE `album_artist`
+            ALTER TABLE `album_lyric`
             ADD CONSTRAINT
-                `album_artist_album_contraint`
+                `album_lyric_album_contraint`
                 FOREIGN KEY (`album_id`)
                 REFERENCES `album`(`id`)
                 ON DELETE RESTRICT
